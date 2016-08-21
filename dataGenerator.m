@@ -7,10 +7,13 @@ function dataGenerator
 
 [accs,accsCell] = rule_base_filter;
 
+patches = splitPatch(accsCell,800);
+features = extractFeatures(patches);
+save('features_800','features');
+
 patches = splitPatch(accsCell,10);
 features = extractFeatures(patches);
 save('features_10','features');
-%save('patches','patches');
 
 patches = splitPatch(accsCell,50);
 features = extractFeatures(patches);
@@ -33,9 +36,7 @@ patches = splitPatch(accsCell,400);
 features = extractFeatures(patches);
 save('features_400','features');
 
-patches = splitPatch(accsCell,400);
-features = extractFeatures(patches);
-save('features_500','features');
+label_data;
 
 end
 

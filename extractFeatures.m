@@ -10,12 +10,13 @@ function [features] = extractFeatures(accsCells)
 % SE Signal entropy
 % weight Normalization parameters
 
-
+features = [];
 for i = 1:size(accsCells,2)
     if size(accsCells{i},1)>5
         temp = accsCells{i};
         timestamp = temp(1);
         FT = fft(accsCells{i},13);
+        FT = FT(4:end,:);
         AR = get_amplitude_range(FT(:,5));
         RMS = get_channel_RMS(FT(:,5));
         %[NPCR,NTL] = get_norm_peaksNtime_lags(accsCells{i});
@@ -24,6 +25,8 @@ for i = 1:size(accsCells,2)
         SE = get_entropy(accsCells{i});
         %weight = size(accsCells{i},1)/5926725;
         features = [features;timestamp,AR,RMS,DF,ER,SE];
+        i
+        size(accsCells,2)
     end
 end
 end

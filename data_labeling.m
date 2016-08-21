@@ -1,4 +1,4 @@
-function [udata,ldata,labels] = data_labeling(data)
+function s = data_labeling(data)
 %ldata = labeled data
 %udata = unlabeled data
 %labels = labels of ldata
@@ -27,5 +27,7 @@ for i = 1:size(ldata,1)
 end
 udata = udata(:,2:end);
 ldata = ldata(:,2:end);
+
+s = struct('udata',udata,'ldata',ldata,'labels',labels);
 
 end
