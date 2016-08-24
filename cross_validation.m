@@ -1,4 +1,4 @@
-function [ samples ] = cross_validation(data,labels,sample_num)
+function [ tr,te ] = cross_validation(data,labels,sample_num)
 %CROSS-VALIDATION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -11,6 +11,6 @@ for i =2:sample_num
     [tr(i),te(i)] = smpl.split(i,sample_num);  
 end
 
-samples = struct('train',tr,'test',te);
+%samples = struct('train',tr,'test',te);
 end
 

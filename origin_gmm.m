@@ -1,4 +1,4 @@
-function varargout = origin_gmm(X, K_or_centroids)  
+function model = origin_gmm(X, K_or_centroids)  
 % ============================================================  
 % Expectation-Maximization iteration implementation of  
 % Gaussian Mixture Model.  
@@ -41,7 +41,7 @@ function varargout = origin_gmm(X, K_or_centroids)
     Lprev = -inf; %????????  
 
     %% EM Algorithm 
-    Ls = zeros(1000);
+    Ls = zeros(1200);
     p = 1;
     while p<=1000  
         %% Estimation Step  
@@ -76,17 +76,11 @@ function varargout = origin_gmm(X, K_or_centroids)
         Ls(p)=sum(log(Px*pPi'));
         p = p+1;
     end  
-    plot(1:1000,Ls);
     
-    if nargout == 1  
-        varargout = {Px};  
-    else  
         model = [];  
-        model.Miu = pMiu;  
-        model.Sigma = pSigma;  
-        model.Pi = pPi;  
-        varargout = {Px, model};  
-    end  
+        model.u = pMiu;  
+        model.pSigma = pSigma;  
+        model.a = pPi;   
    
     %% Function Definition  
       
